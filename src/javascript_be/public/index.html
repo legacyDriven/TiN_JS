@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Witamy na naszej stronie!</h1>
+<p>To jest przykładowa strona serwowana przez Express.js.</p>
+
+<form action="/submit-form" method="post">
+    <input type="text" name="name" placeholder="Imię" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="number" name="age" min="18" placeholder="Wiek" required>
+    <button type="submit">Wyślij</button>
+</form>
+</body>
+</html>
