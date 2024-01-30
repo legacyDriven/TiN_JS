@@ -1,25 +1,45 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+const port = 3000;
 
-// Middleware do parsowania danych formularza
+// Ustawienie folderu public jako miejsca na statyczne pliki
+app.use(express.static('public'));
+// Ustawienie silnika szablonów na EJS
 app.use(express.urlencoded({ extended: true }));
 
-// Serwowanie statycznych zasobów
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Start serwera
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Serwer działa na porcie ${PORT}`);
+app.post('/submit-form', (req, res) => {
+    const data = req.body;
+    // Tu można dodać logikę przetwarzania danych
+    res.send('Otrzymane dane: ' + JSON.stringify(data));
 });
 
-// Obsługa endpointa do przyjmowania i walidacji danych formularza
-app.post('/submit-form', (req, res) => {
-    const { name, email, age } = req.body;
-    if (!name || !email || age < 18) {
-        res.send('Błąd walidacji');
-    } else {
-        res.send(`Otrzymane dane: ${name}, ${email}, ${age}`);
+app.post('/calculate-bmi', (req, res) => {
+    const { name, weight, height } = req.body;
+    const weightNum = parseFloat(weight);
+    const heightMeters = parseFloat(height) / 100;
+
+    // Prosta walidacja
+    if (!name || weightNum <= 0 || heightMeters <= 0) {
+        return res.send('Podano nieprawidłowe dane.');
     }
+
+    const bmi = (weightNum / (heightMeters * heightMeters)).toFixed(2);
+
+    res.send(`Witaj ${name}, Twoje BMI wynosi: ${bmi}`);
+});
+
+app.post('/register', (req, res) => {
+    const { email } = req.body;
+    // Regex dla walidacji e-maila zgodny ze standardem RFC
+    const emailRegex = /^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$/;
+    if (!emailRegex.test(email)) {
+        return res.send('Podano nieprawidłowy adres e-mail.');
+    }
+
+    res.send('Rejestracja zakończona sukcesem. Twój e-mail: ' + email);
+});
+
+app.listen(port, () => {
+    console.log(`Serwer uruchomiony na porcie ${port}`);
 });
