@@ -12,6 +12,18 @@
         <label for="email">Adres e-mail:</label>
         <input type="email" id="email" name="email" required>
     </div>
+    <div>
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" required minlength="3" maxlength="20">
+    </div>
+    <div>
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" required minlength="3" maxlength="20">
+    </div>
+    <div>
+        <label for="pesel">PESEL:</label>
+        <input type="text" id="pesel" name="pesel" required pattern="\d{11}">
+    </div>
     <button type="submit">Zarejestruj</button>
 </form>
 </body>
