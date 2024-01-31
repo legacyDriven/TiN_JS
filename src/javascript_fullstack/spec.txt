@@ -1,0 +1,26 @@
+Technologie Internetu – komunikacja Frontent-Backend (10 pkt)
+
+Zaimplementuj poniższe wymagania.
+Na backendzie możesz użyć czystego Node.js lub Express.js.
+Użyj własnej inwencji do uzupełnienia „brakujących” elementów wymagań.
+Implementacje wszystkich wymagań można przedstawić w ramach jednej aplikacji.
+
+Aplikacja serwująca formularz (statyczny HTML+CSS+JS)
+zawierający przynajmniej 3 pola różnych typów.
+Dane z formularza powinny zostać zwalidowane,
+jeśli przejdą walidację powinny zostać wysłane asynchronicznie na backend
+(jeśli nie – wyświetlamy odpowiedni komunikat).
+
+Na backendzie należy wykonać na tych danych walidację,
+następnie jakąś operację i odesłać wynik
+(lub informację o nieudanej walidacji) na frontend.
+Frontend powinien odpowiednio przedstawić wynik operacji/walidacji użytkownikowi.
+
+Przynajmniej jedno z pól powinno mieć reguły walidacji wychodzące poza
+sprawdzenie obecności (np. wykorzystanie regexpa lub inna funkcja walidująca).
+Formularz i reguły walidacji powinny mieć sens 😉. (5 pkt)
+
+Aplikacja okresowo odpytująca asynchronicznie backend o nowe dane
+i aktualizująca wyświetlaną użytkownikowi stronę tak, by przedstawić mu nowe dane.
+Backend przy każdym odpytaniu powinien zaserwować nowe dane – mogą być generowane losowo,
+odczytywane z pliku czy też dostarczane w jakiś inny sposób (5 pkt).
